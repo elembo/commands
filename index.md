@@ -3,7 +3,7 @@
 ## Ingress PE
 
 show pim vrf xxxx interface  
-show pim vrf xxxx neighbors <<<<< Not all Profiles need to see PIM Neighbors\
+show pim vrf xxxx neighbors <<<<< Not all Profiles need to see PIM Neighbors  
 show pim vrf xxxx topology A.B.C.D\
 show pim vrf xxxx mdt cache X.Y.W.Z | in A.B.C.D <<<< X.Y.W.Z is Ingress PE and A.B.C.D the Mcast Group\
 show mrib vrf xxxx route A.B.C.D detail\
