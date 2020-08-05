@@ -1,37 +1,87 @@
-## Welcome to GitHub Pages
+Swiss Army of Commands
+Ingress PE
 
-You can use the [editor on GitHub](https://github.com/elembo/commands/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+show pim vrf xxxx interface
+show pim vrf xxxx neighbors <<<<< Not all Profiles need to see PIM Neighbors
+show pim vrf xxxx topology A.B.C.D
+show pim vrf xxxx mdt cache X.Y.W.Z | in A.B.C.D <<<< X.Y.W.Z is Ingress PE and A.B.C.D the Mcast Group
+show mrib vrf xxxx route A.B.C.D detail
+show mpls mldp database p2mp root <<X.Y.W.Z>> opaquetype << mdt id >> detail <<<< X.Y.W.Z is Ingress PE and mdt id either mdt or global id
+6.6 xxxxx detail <<<< use local label from mdt data <<<<
+show mpls forwarding labels xxxxx detail
+show mpls forwarding labels xxxxx hardware ingress/egress detail location x/x/cpu0
+show controllers mgidprgm mgidindex yyyyy location x/x/cpu0 <<<<<<< where yyyyy is the mgid id from previous output.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+ 
+Egress PE
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+show igmp vrf xxxx group A.B.C.D
+show igmp vrf xxxx interface
+show pim vrf xxxx interface
+show pim vrf xxxx neighbors <<<<< Not all Profiles need to see PIM Neighbors
+show pim vrf xxxx topology A.B.C.D
+show pim vrf xxxx mdt cache X.Y.W.Z | in A.B.C.D <<<< X.Y.W.Z is Ingress PE and A.B.C.D the Mcast Group
+show mrib vrf xxxx route A.B.C.D detail
+show mpls mldp database p2mp root <<X.Y.W.Z>> opaquetype << mdt id >> detail <<<< X.Y.W.Z is Ingress PE and mdt id either mdt or global id
+show mrib mpls forwarding labels xxxxx detail <<<< use local label from mdt data <<<<
+show mpls forwarding labels xxxxx detail
+show mpls forwarding labels xxxxx hardware ingress/egress detail location x/x/cpu0
+show controllers mgidprgm mgidindex yyyyy location x/x/cpu0 <<<<<<< where yyyyy is the mgid id from previous output.
 
-```markdown
-Syntax highlighted code block
+ 
+CORE
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+show mpls mldp database p2mp root <<X.Y.W.Z>> opaquetype << mdt id >> detail <<<< X.Y.W.Z is Ingress PE and mdt id either mdt or global id
+show mrib mpls forwarding labels xxxxx detail <<<< use local label from mdt data <<<<
+show mpls forwarding labels xxxxx detail
+show mpls forwarding labels xxxxx hardware ingress/egress detail location x/x/cpu0
+show controllers mgidprgm mgidindex yyyyy location x/x/cpu0 <<<<<<< where yyyyy is the mgid id from previous output.
+ 
+BGP Signaling (Mcast vpn NLRI)
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+show bgp ipv4 mvpn vrf xxxxx route-type 1 --> each PE in the VRF will generate its own T-1
+show bgp ipv4 mvpn vrf xxxxx route-type 3 --> MDT Data, advertisment by Ingress PE, and *,* advertise by Egress PE
+show bgp ipv4 mvpn vrf xxxxx route-type 5 --> S,G Advertisment >>>> Ingress PE originates it.
+show bgp ipv4 mvpn vrf xxxxx route-type 6 --> *,G Join <<< Egress PE originates it
+show bgp ipv4 mvpn vrf xxxxx route-type 7 --> S,G Join <<< Egress PE originate it in SSM << PE connected to PIM-RP originates it in SM
 
-[Link](url) and ![Image](src)
-```
+Generic
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+admin show diag chassis eeprom-info
+show igmp vrf xxxx ranges
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/elembo/commands/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+show pim vrf xxxx context private detail
+show pim vrf xxxx range-list
+show pim vrf xxxxx rp mapping
+show mgid client mapping name mribv4
+show mpls ldp capability
+show mpls ldp neighbors
+show mpls mldp status
+show mpls mldp root
+show mpls mldp database brief
+show mpls forwarding p2mp
+show mpls forwarding labels <LABEL> hardware ingress detail location <LCs>
+show mpls forwarding labels <LABEL> hardware egress detail location <LCs>
+show mpls forwarding labels <LABEL> detail debug
+show mpls forwarding labels <LABEL> detail debug location <LC>
 
-### Support or Contact
+ 
+Show Techs
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+show tech multicast address-family ipv4/ipv6
+show tech multicast address-family ipv4/ipv6 vrf <>
+show tech multicast address-family ipv4/ipv6 hardware
+show tech mgid
+show tech pfi
+show tech bundle
+show tech np
+show tech-support mpls lsd
+show tech mpls ldp
+show tech cef
+show tech cef platform
+show log
