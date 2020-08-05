@@ -16,6 +16,8 @@ show controllers mgidprgm mgidindex yyyyy location x/x/cpu0 <<<<<<< where yyyyy 
 Egress PE
 
 show igmp vrf xxxx group A.B.C.D\
+
+
 show igmp vrf xxxx interface\
 show pim vrf xxxx interface\
 show pim vrf xxxx neighbors <<<<< Not all Profiles need to see PIM Neighbors\
